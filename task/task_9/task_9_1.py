@@ -27,3 +27,30 @@
 #  >>> c.increment()
 #  Maximal value is reached.
 #  >>> c.get()
+
+class Counter:
+    def __init__(self, value=0, stop=None):
+        self.value = value
+        self.stop = stop
+
+    def increment(self):
+        if self.stop is None or self.value < self.stop:
+            self.value += 1
+        else:
+            raise Exception('Достигнуто максимальное значение')
+
+    def get(self):
+        return self.value
+
+
+counter = Counter(stop=10)
+
+try:
+    while True:
+        print(counter.get())
+        counter.increment()
+except Exception as e:
+    print(e)
+
+
+
